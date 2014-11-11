@@ -1,8 +1,10 @@
 package charfinder;
 
-public class CharFinder {
-
-	public static void main(String[] args) {
+public class CharFinder
+{
+	
+	public static void main(String[] args)
+	{
 		CharFinder ch = new CharFinder();
 		String s = "Praktikum";
 		Character t = s.charAt(0);
@@ -16,53 +18,104 @@ public class CharFinder {
 		ch.printAllPositions(s);
 		ch.containsK(s, 'm');
 		ch.countCharOccALaForLoop(s, 'k');
+		ch.countCharOccALaWhileLoop(s, 'u');
 	}
-
-	Character getFirstChar(String s) {
+	
+	Character getFirstChar(String s)
+	{
 		Character ch = s.charAt(0);
 		return ch;
 	}
-
-	Character getLastChar(String s) {
+	
+	Character getLastChar(String s)
+	{
 		Character ch = s.charAt(s.length() - 1);
 		return ch;
 	}
-
-	void printAllPositions(String s) {
+	
+	void printAllPositions(String s)
+	{
 		Integer currentPorition = 0;
 		Integer lastPosition = s.length() - 1;
-		while (currentPorition <= lastPosition) {
+		while (currentPorition <= lastPosition)
+		{
 			System.out.println(s.charAt(currentPorition) + " is at position: "
 					+ currentPorition);
 			currentPorition++;
 		}
 	}
-
-	void getCharPos(String s, Character toFind) {
+	
+	void getCharPos(String s, Character toFind)
+	{
 		Integer currentPorition = 0;
 		Integer lastPosition = s.length() - 1;
 		Boolean found = false;
-		while (currentPorition <= lastPosition) {
-			if (s.charAt(currentPorition) == toFind) {
+		while (currentPorition <= lastPosition)
+		{
+			if (s.charAt(currentPorition) == toFind)
+			{
 				System.out.println(toFind + " is at Position "
 						+ currentPorition + " of " + s);
 			}
 		}
 	}
-
-	public void containsK(String s, Character toFind) {
+	
+	public void containsK(String s, Character toFind)
+	{
 		s = s.toLowerCase();
 		Integer lastPosition = s.length() - 1;
 		Boolean found = false;
-		for (Integer currentPosition = 0; currentPosition <= lastPosition; currentPosition++) {
-			if (s.charAt(currentPosition) == toFind) {
+		for (Integer currentPosition = 0; currentPosition <= lastPosition; currentPosition++)
+		{
+			if (s.charAt(currentPosition) == toFind)
+			{
 				System.out.println(toFind + " is at Position "
 						+ currentPosition);
 				found = true;
 			}
 		}
-		if (found == false) {
+		if (found == false)
+		{
 			System.out.println(toFind + " was not found!");
+		}
+	}
+	
+	void countCharOccALaWhileLoop(String s, Character toFind)
+	{
+		s = s.toLowerCase();
+		Integer charOcc = 0;
+		Integer currentPosition = 0;
+		while (currentPosition < s.length())
+		{
+			if (s.charAt(currentPosition) != toFind)
+			{
+				currentPosition++;
+				continue;
+			}
+			else
+			{
+				currentPosition++;
+				charOcc++;
+			}
+
+		}
+		
+		if (charOcc == 0)
+		{
+			System.out.println("'" + toFind + "' was not Found in " + s + ".");
+		}
+		else
+		{
+			if (charOcc == 1)
+			{
+				System.out.println("There is " + charOcc + " occurence of '"
+						+ toFind + "' in " + s + ".");
+			}
+			else
+			{
+				System.out.println("There are " + charOcc + " occurences of '"
+						+ toFind + "' in " + s + ".");
+			}
 		}
 	}
 	
@@ -71,9 +124,9 @@ public class CharFinder {
 		s = s.toLowerCase();
 		Integer stringLength = s.length();
 		Integer charOcc = 0;
-		for(Integer i = 0; i < stringLength; i++)
+		for (Integer i = 0; i < stringLength; i++)
 		{
-			if(s.charAt(i) != toFind)
+			if (s.charAt(i) != toFind)
 			{
 				continue;
 			}
@@ -82,19 +135,22 @@ public class CharFinder {
 				charOcc++;
 			}
 		}
-		if(charOcc == 0)
+		
+		if (charOcc == 0)
 		{
-			System.out.println("'" + toFind + "' was not Found in " + s );
+			System.out.println("'" + toFind + "' was not Found in " + s + ".");
 		}
 		else
 		{
 			if (charOcc == 1)
 			{
-				System.out.println("There is " + charOcc + " occurence of '" + toFind + "' in " + s);
+				System.out.println("There is " + charOcc + " occurence of '"
+						+ toFind + "' in " + s + ".");
 			}
-			else 
+			else
 			{
-				System.out.println("There are " + charOcc + " occurences of '" + toFind + "' in " + s );
+				System.out.println("There are " + charOcc + " occurences of '"
+						+ toFind + "' in " + s + ".");
 			}
 		}
 	}
